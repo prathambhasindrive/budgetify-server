@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8000;
 app.use("/api/v1/user", userRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello! This is Server. ");
+  res.send("Hello! This is Server. How are you?");
 });
 
 app.listen(PORT, () => {
