@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 
 // -------------------------Routes------------------------------
 const userRoutes = require("./routes/userRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
 // ------------------------Middlewares---------------------------
 require("dotenv").config();
 app.use(express.json());
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 8000;
 // ----------------------------------------------------------------
 
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/category",categoryRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello! This is Server. How are you?");
