@@ -7,6 +7,7 @@ const {
   login,
   resetPassword,
   resetPasswordThroughLink,
+  logout,
 } = require("../controllers/Auth");
 const { auth } = require("../middlewares/auth");
 
@@ -15,6 +16,7 @@ router.post("/signup", signup);
 router.post("/login", login);
 router.post("/resetPassword", resetPassword);
 router.post("/update-password/:token", resetPasswordThroughLink);
+router.post('/logout',auth,logout  )
 
 router.get("/auth", auth, (req, res) => {
   try {

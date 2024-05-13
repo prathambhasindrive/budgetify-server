@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 const otpGenerator = require("otp-generator");
@@ -10,12 +10,14 @@ const mailSender = require("../utils/mailSender");
 //Generate and save otp
 exports.sendOTP = async (req, res) => {
   try {
+    console.log(req.body);
+
     const { email, password, confirmPassword, firstname, lastname } = req.body;
     // validate inputs
     if (!email || !firstname || !confirmPassword || !lastname || !password) {
       return res.status(400).json({
         success: false,
-        message: "Please fill all the fields",
+        message: "Please fill all the fields..",
       });
     }
 
@@ -401,3 +403,24 @@ exports.resetPasswordThroughLink = async (req, res) => {
     });
   }
 };
+
+
+exports.logout = async (req, res) => { 
+  try {
+    const token = req.user.token;
+    res.clearCookie('token');
+    res.status(200).json({
+      success: true,
+      message: "User logged out successfully",
+    });
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message:
+        "Internal Server Error || Error in logging out : " + error.message,
+    });
+    
+  }
+ };

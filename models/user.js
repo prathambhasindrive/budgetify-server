@@ -12,9 +12,10 @@ const userSchema = new mongoose.Schema({
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  imgUrl : { type: String },
+  imgUrl: { type: String },
   token: { type: String },
-  resetPasswordExpiresIn: { type: Date }, 
+  resetPasswordExpiresIn: { type: Date },
+  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
 });
 
 const User = mongoose.model("User", userSchema);
