@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
-
+const cors = require('cors');
 // -------------------------Routes------------------------------
 const userRoutes = require("./routes/userRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
@@ -9,6 +9,7 @@ const categoryRoutes = require("./routes/categoryRoutes");
 require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 // -------------------------Importing----------------------------
 const dbConnect = require("./config/database");
 const PORT = process.env.PORT || 8000;

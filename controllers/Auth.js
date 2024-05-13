@@ -142,11 +142,11 @@ exports.signup = async (req, res) => {
       .sort({ createdAt: -1 })
       .limit(1);
 
-    console.log(recentotp);
+    console.log("recentOTP from database : ",recentotp);
 
     // vaidate otp
 
-    if (recentotp.lenght == 0) {
+    if (recentotp.lenght == 0 || recentotp == null) {
       // Otp not found
       return res.status(400).json({
         success: false,
