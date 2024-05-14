@@ -263,6 +263,7 @@ exports.login = async (req, res) => {
       existingUser,
       message: "User logged in successfully",
     });
+    console.log("User logged in successfully", existingUser );
   } catch (error) {
     console.log(error);
     return res.status(500).json({
@@ -277,6 +278,7 @@ exports.login = async (req, res) => {
 exports.resetPassword = async (req, res) => {
   try {
     // get the user from req.body
+    console.log(req.body)
     const { email } = req.body;
 
     // check if the user exists

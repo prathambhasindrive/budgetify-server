@@ -16,7 +16,7 @@ router.post("/signup", signup);
 router.post("/login", login);
 router.post("/resetPassword", resetPassword);
 router.post("/update-password/:token", resetPasswordThroughLink);
-router.post('/logout',auth,logout  )
+router.post('/logout',auth,logout)
 
 router.get("/auth", auth, (req, res) => {
   try {
